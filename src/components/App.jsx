@@ -33,16 +33,22 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      currentVideo: 0,
+      currentVideo: exampleVideoData[0],
       videoList: exampleVideoData
-
     };
 
   }
 
-  whenClicked(index) {
+  whenClicked(video) {
     this.setState({
-      currentVideo: index
+      currentVideo: video
+    });
+  }
+
+  whenTyped(searchString) {
+    this.setState({
+      currentVideo: video,
+      videoList: exampleVideoData
     });
   }
 
@@ -51,12 +57,13 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here</h5></div>
+            <div><h5><searchYouTube videos={this.state.videoList} whenTyped = {this.whenTyped.bind(this)}/></h5></div>
+
           </div>
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <div><h5><VideoPlayer video={this.state.videoList[this.state.currentVideo]} /></h5></div>
+            <div><h5><VideoPlayer video={this.state.currentVideo}/></h5></div>
           </div>
           <div className="col-md-5">
             <div><h5><VideoList videos={this.state.videoList} whenClicked={this.whenClicked.bind(this)}/></h5></div>
