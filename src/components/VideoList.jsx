@@ -7,7 +7,10 @@ var VideoList = (props) => (
     <div><h5><em>{props.videos[2].snippet.title}</em>{props.videos[2].snippet.description}</h5></div>
     <div><h5><em>{props.videos[3].snippet.title}</em>{props.videos[3].snippet.description}</h5></div>
     <div><h5><em>{props.videos[4].snippet.title}</em>{props.videos[4].snippet.description}</h5></div> */}
-    {props.videos.map((video, index) => <VideoListEntry video={video} key={index}/>)}
+    {props.videos.map((video, index) => {
+      //props.whenClicked(index);
+      return (<VideoListEntry video={video} key={index} whenClicked={props.whenClicked}/>);
+    })}
   </div>
 );
 
